@@ -1,0 +1,15 @@
+*,
+*::after,
+*::before{ //'*' - This is known as the universal selector
+    margin: 0;
+    padding: 0;
+    box-sizing: inherit;
+}
+
+html{
+    font-size: 62.5%;
+}
+ 
+body{
+    box-sizing: border-box; //This changes the box model and ensures that the padding and margin are not added to the height or width of the box
+}

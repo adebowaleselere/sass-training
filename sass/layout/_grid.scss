@@ -1,0 +1,50 @@
+.row{
+    max-width: $grid-width; 
+    // background-color: aqua; This was for testing purposes
+    margin: 0 auto; //This is ow you center a block element in another block element
+    
+    &:not(:last-child){
+        margin-bottom: $gutter-vertical;
+    }
+
+    @include clearfix; //We included the clear-fix here because it is the row that is collapsing due to it's elements(col) being floated. 
+    
+    [class^="col-"]{ //This is known as attr selector. It allows you to select stuff bassed on specific rules like in this case where we selected all classes that begin with "col-"
+        // background-color: orangered; This was for testing purposes
+        float: left;
+
+        &:not(:last-child){
+            margin-right: $gutter-horizontal;
+        }
+    }
+
+    .col-1-of-2{
+        width: calc((100% - #{$gutter-horizontal})/2);
+        
+    }
+
+    .col-1-of-3{
+        width: calc((100% - (2 * #{$gutter-horizontal}))/3);
+                
+    }
+
+    .col-1-of-4{
+        width: calc((100% - (3 * #{$gutter-horizontal}))/4);
+                
+    }
+
+    .col-2-of-3{
+        width: calc(#{$gutter-horizontal} + (2 * ((100% - (2 * #{$gutter-horizontal}))/3)));
+                
+    }
+
+    .col-2-of-4{
+        width: calc((#{$gutter-horizontal}) + (2 * ((100% - (3 * #{$gutter-horizontal}))/4)));
+                
+    }
+
+    .col-3-of-4{
+        width: calc((2 * #{$gutter-horizontal}) + (3 * ((100% - (3 * #{$gutter-horizontal}))/4)));
+                
+    }
+}

@@ -1,0 +1,45 @@
+// To create animations, start with creating the keyframes and give it a title . Then specify what ou want to happen between 0% and 100%. To apply use the animation-name and duration on the element that you want the animation to be apply on*/
+
+@keyframes moveInLeft {
+    0%{
+        opacity: 0;
+        transform: translateX(-50%);
+    }
+
+    80%{
+        transform: translateX(1rem);
+    }
+
+    100%{
+        opacity: 1;
+        transform: translate(0);
+    }
+}
+
+@keyframes moveInRight {
+    0%{
+        opacity: 0;
+        transform: translateX(50%);
+    }
+
+    80%{
+        transform: translateX(-1rem);
+    }
+
+    100%{
+        opacity: 1;
+        transform: translate(0);
+    }
+}
+
+@keyframes moveInBottom {
+    0%{
+        opacity: 0;
+        transform: translateY(3rem);
+    }
+
+    100%{
+        opacity: 1;
+        transform: translate(0);
+    }
+}

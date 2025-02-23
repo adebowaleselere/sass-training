@@ -1,0 +1,81 @@
+.btn{
+    &:link, 
+    &:visited{
+        text-transform: uppercase;
+        font-size: $default-font-size;
+        text-decoration: none;
+        padding: 1.5rem 4rem;
+        display: inline-block; //This is so that it can behave like a block element and the padding and margins can work
+        border-radius: 10rem;
+        transition: all .2s ; //This allows us to be precise with the transistion animations.
+        position: relative;
+
+    }
+
+    &:hover{
+        transform: translateY(-.3rem);
+        box-shadow: 0 1rem 2rem rgba($color-black, .2);
+
+        &::after{
+            transform: scale(1.5);
+            opacity: 0;
+        }
+    }
+
+    //It is important to note that the active state is in relaton to the link state and not the hover state. and this is the same as when clicked
+    &:active{
+    transform: translateY(.1rem);
+    box-shadow: 0 .5rem 1rem rgba($color-black, .2);
+    }
+
+    //The trick is to create a similar element behind the original element and then style it
+    //The after psudo element is treated like a child of the original element
+    &--white{
+        background-color: $color-white;
+        color: $color-grey-dark;
+
+        &::after{
+            background-color: $color-white;
+        }
+    }
+
+    &::after{
+        content: "";
+        display: inline-block;
+        height: 100%;
+        width: 100%;
+        border-radius: 10rem;
+        position: absolute;
+        top: 0;
+        left: 0;
+        z-index: -1;
+        transition: all .4s;
+    }
+
+    &--animated{
+        animation: moveInBottom .5s cubic-bezier(0.42, 0, 0.22, 1.5) .75s;
+        animation-fill-mode: backwards; //This automatically adds the 0% style to the original element before it starts
+    }
+
+    &-text:link, 
+    &-text:visited{
+        font-size: $default-font-size;
+        color: $color-primary;
+        display: inline-block;
+        text-decoration: none;
+        border-bottom: .1rem solid $color-primary;
+        padding: .3rem;
+        transition: all .2s;
+    }
+
+    &-text:hover{
+        background-color: $color-primary;
+        color: $color-white;
+        box-shadow: 0 1rem 2rem rgba($color-black, .15);
+        transform: translateY(-2px);
+    }
+
+    &-text:active{
+        transform: translateY(-1px);
+    }
+}

@@ -2,6 +2,59 @@
     width: 75%;
     margin: 0 auto;
     box-shadow: 0 3rem 6rem rgba($color-black, .1);
-    border-radius: 3px;
+    background-color: rgba($color-white, .6);
+    border-radius: $border-radius;
     padding: 6rem;
+    padding-left: 9rem; //This is to fix the fact that we had to push the story shape
+    font-size: $default-font-size;
+
+    transform: skewX(-12deg);
+
+    &__shape{
+        width: 15rem;
+        height: 15rem;
+        float: left;
+        // border-radius: 100px;
+        // background-color: orangered;
+        shape-outside: circle(50% at 50% 50%); //This only works if the element is floated and if it has a height and a width. 
+
+        clip-path: circle(50% at 50% 50%); //We us clip path to define the shape. Why not border radius, this is because clip path crops the property
+        transform: translateX(-3rem) skewX(12deg); //This is the best way to move a floated property. 
+
+        position: relative;
+    }
+
+    &__image{
+        height: 100%;
+        transform: translateX(-4rem) scale(1.4);
+        transition: all .2s ease;
+    }
+
+    &__text{
+        transform: skewX(12deg);
+    }
+
+    &__caption{
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, 20%);
+        color: $color-white;
+        text-transform: uppercase;
+        font-size: 1.7rem;
+        text-align: center;
+        opacity: 0;
+        transition: all .2s ease;
+        backface-visibility: hidden;
+    }
+
+    &:hover &__caption{ //This is saying that we want something to happen to the caption when we hover on the story components
+        opacity: 1;
+        transform: translate(-50%, -50%);
+    }
+
+    &:hover &__image {
+        transform: translateX(-4rem) scale(1);
+        filter: blur(.3rem) brightness(80%); //This is he equivalent to gausian blur - blur. and for brightness, lower is darker and higher is brighter
+    }
 }

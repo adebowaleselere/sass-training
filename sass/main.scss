@@ -8,12 +8,18 @@
 @import "base/utilities";
 
 @import "components/button";
+@import "components/bg-video";
 @import "components/composition";
 @import "components/feature-box";
+@import "components/form";
 @import "components/card";
+@import "components/popup";
 @import "components/story";
+
 
 @import "layout/header.scss";
 @import "layout/grid";
+@import "layout/navigation";
+@import "layout/footer";
 
 @import "pages/home"

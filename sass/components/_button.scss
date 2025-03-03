@@ -1,4 +1,5 @@
 .btn{
+    &,
     &:link, 
     &:visited{
         text-transform: uppercase;
@@ -9,6 +10,11 @@
         border-radius: 10rem;
         transition: all .2s ; //This allows us to be precise with the transistion animations.
         position: relative;
+
+        //Change for the <button element>
+
+        border: none;
+        cursor: pointer;
 
     }
 
@@ -23,9 +29,11 @@
     }
 
     //It is important to note that the active state is in relaton to the link state and not the hover state. and this is the same as when clicked
-    &:active{
-    transform: translateY(.1rem);
-    box-shadow: 0 .5rem 1rem rgba($color-black, .2);
+    &:active,
+    &:focus{
+        outline: none;
+        transform: translateY(.1rem);
+        box-shadow: 0 .5rem 1rem rgba($color-black, .2);
     }
 
     //The trick is to create a similar element behind the original element and then style it

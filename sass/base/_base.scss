@@ -8,8 +8,29 @@
 
 html{
     font-size: 62.5%;
+
+    // @include respond(phone){ //We dont need this because it is the same with tab-port
+    //     font-size: 50%;
+    // }
+
+    @include respond(tab-land){ // width < 1200px
+        font-size: 56.25%;  //1rem = 9px; 9/16 = 56.25%
+    }
+
+    @include respond(tab-port){ // width < 900px
+        font-size: 50%;  //1rem = 8px; 8/16 = 50%
+    }
+
+    @include respond(big-desktop){
+        font-size: 80%; //1rem =12px; 12/16 = 75%
+    }
 }
  
 body{
     box-sizing: border-box; //This changes the box model and ensures that the padding and margin are not added to the height or width of the box
+    padding: 3rem;
+
+    @include respond(tab-port){ // width < 900px
+        padding: 0;
+    }
 }

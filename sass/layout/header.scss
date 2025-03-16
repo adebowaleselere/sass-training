@@ -1,16 +1,57 @@
 .header{
-    height: 95vh; //This means that the height of the element is the 95% of whatever viewport we are using
+    height: 85vh; //This means that the height of the element is the 95% of whatever viewport we are using
     background-image: linear-gradient(
         to right bottom, 
         rgba($color-primary-light, 0.8), 
         rgba($color-primary-dark, 0.8)), 
-        url(../img/hero.jpg);
+        url(../img/hero-small.jpg);
     background-size: cover; //This fits it into the width of the viewport
     background-position: top; //This enssure that when the viewport is being resized, the scaling of the bkg is done from the top of the image. You can do center and more
     position: relative;
 
-    clip-path: polygon(0 0, 100% 0, 100% 75%, 0 100%); // You can define coordinates using the polygon function and it creates a clip-path with that shape. It goes from the top left point and then clockwise 
-    // clip-path: polygon(0 0, 100% 50%, 0 100%); This created a triangle 
+
+    @supports((clip-path: polygon(0 0)) or (-webkit-clip-path(0 0))){
+        clip-path: polygon(0 0, 100% 0, 100% 75vh, 0 100%); // You can define coordinates using the polygon function and it creates a clip-path with that shape. It goes from the top left point and then clockwise 
+        height: 95vh;
+    }
+
+    @include respond(phone){
+        clip-path: polygon(0 0, 100% 0, 100% 85vh, 0 100%);
+    }
+
+    /*
+
+    This would be applied for when resultion >= 192dpi and the width >= 600px
+    @media (min-resolution: 192dpi) and (min-width: 600px) { 
+        background-image: linear-gradient(
+        to right bottom, 
+        rgba($color-primary-light, 0.8), 
+        rgba($color-primary-dark, 0.8)), 
+        url(../img/hero.jpg);
+    }
+
+
+    This would be applied for when the width >= 2000px
+    @media (min-width: 2000px) { 
+        background-image: linear-gradient(
+        to right bottom, 
+        rgba($color-primary-light, 0.8), 
+        rgba($color-primary-dark, 0.8)), 
+        url(../img/hero.jpg);
+    }
+
+    */
+
+    //The comma is like an or. So this declaration would happen at either of the media queries
+    @media only screen and (min-resolution: 192dpi) and (min-width: 37.5em) , 
+           only screen and (-webkit-min-device-pixel-ratio: 2) and (min-width: 37.5em),
+           only screen and (min-width: 125em) {  
+        background-image: linear-gradient(
+        to right bottom, 
+        rgba($color-primary-light, 0.8), 
+        rgba($color-primary-dark, 0.8)), 
+        url(../img/hero.jpg);
+    }
 
     &__logo-box{
         position: absolute;

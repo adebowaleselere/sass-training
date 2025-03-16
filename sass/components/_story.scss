@@ -10,18 +10,37 @@
 
     transform: skewX(-12deg);
 
+    @include respond(tab-port){
+        width: 100%;
+        padding: 4rem;
+        padding-left: 7rem;
+    }
+
+    @include respond(phone){
+        transform: skewX(0);
+    }
+
     &__shape{
-        width: 15rem;
-        height: 15rem;
         float: left;
         // border-radius: 100px;
         // background-color: orangered;
-        shape-outside: circle(50% at 50% 50%); //This only works if the element is floated and if it has a height and a width. 
-
-        clip-path: circle(50% at 50% 50%); //We us clip path to define the shape. Why not border radius, this is because clip path crops the property
         transform: translateX(-3rem) skewX(12deg); //This is the best way to move a floated property. 
-
         position: relative;
+        overflow: hidden;
+        border-radius: 50%;
+
+        @include respond(phone){
+            transform: translateX(-3rem) skewX(0);
+        }
+
+        @supports((clip-path: polygon(0 0)) or (-webkit-clip-path(0 0))){
+            clip-path: circle(50% at 50% 50%);
+            width: 15rem;
+            height: 15rem;
+            shape-outside: circle(50% at 50% 50%); //This only works if the element is floated and if it has a height and a width. 
+            clip-path: circle(50% at 50% 50%); //We us clip path to define the shape. Why not border radius, this is because clip path crops the property
+            border-radius: none;
+        }
     }
 
     &__image{
@@ -32,6 +51,10 @@
 
     &__text{
         transform: skewX(12deg);
+
+        @include respond(phone){
+            transform: skewX(0);
+        }
     }
 
     &__caption{

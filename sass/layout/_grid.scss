@@ -2,27 +2,36 @@
     max-width: $grid-width; 
     // background-color: aqua; This was for testing purposes
     margin: 0 auto; //This is ow you center a block element in another block element
+
+    @include respond(tab-port){
+        max-width: 50rem;
+        padding: 0 3rem;
+    }
     
     &:not(:last-child){
         margin-bottom: $gutter-vertical;
+
+        @include respond(tab-port){
+            margin-bottom: $gutter-vertical-small;
+        }
     }
 
     @include clearfix; //We included the clear-fix here because it is the row that is collapsing due to it's elements(col) being floated. 
     
     [class^="col-"]{ //This is known as attr selector. It allows you to select stuff bassed on specific rules like in this case where we selected all classes that begin with "col-"
-        // background-color: orangered; This was for testing purposes
         float: left;
 
         &:not(:last-child){
             margin-right: $gutter-horizontal;
 
-            @include respond(phone){
+            @include respond(tab-port){
                 margin-right: 0;
+                margin-bottom: $gutter-vertical-small;
             }
         }
 
         @include respond(tab-port){
-            width: 100% !important;
+            width: 100% !important; //This is because it is for responsiveness and we need the grids overwirtted
         }
     }
 

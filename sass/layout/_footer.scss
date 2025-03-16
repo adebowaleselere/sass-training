@@ -4,8 +4,15 @@
     font-size: 1.4rem;
     color: $color-grey-light-1;
 
+   
+
     &__logo-box{
         text-align: center; //This is beacuase an image is an inline elment and would behave like a text
+        margin-bottom: 8rem;
+
+        @include respond(tab-port){
+            margin-bottom: 4rem;
+        }
     }
 
     &__logo{
@@ -17,6 +24,11 @@
         border-top: .1rem solid $color-grey-dark;
         padding-top: 2rem;
         display: inline-block;
+
+        @include respond(tab-port){
+            width: 100%;
+            text-align: center;
+        }
 
     }
 
@@ -55,6 +67,11 @@
         padding-top: 2rem;
         width: 80%;
         float: right;
+
+        @include respond(tab-port){
+            width: 100%;
+            float: none;
+        }
         
     }
 }
